@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Redirection</title>
+  <script>
+    // Single Page Apps for GitHub Pages
+    // MIT License: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/LICENSE
+    
+    // This script takes the current URL and converts the path and query string into
+    // just a query string, and then redirects the browser to the new URL with only
+    // a query string and the hash fragment intact.
+    
+    // If the path has a slash at the end, remove it to normalize it
+    let pathSegments = location.pathname.split('/');
+    let basePath = pathSegments.slice(0, -1).join('/');
+    // If the path includes an html file, remove it for the base path
+    basePath = basePath.replace(/\.html$/, '');
+    
+    // Detect the repo name if we're on GitHub Pages
+    const repoName = pathSegments[1] === '404.html' 
+      ? '' 
+      : '/' + pathSegments.filter(seg => seg !== '').shift();
+    
+    const l = window.location;
+    let redirectURL = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '');
+    
+    // Add base path to the redirect URL
+    redirectURL += repoName ? repoName : '';
+    
+    // Add the redirect query parameter
+    const encodedPath = location.pathname
+      .replace(/^\/404.html/, '')
+      .replace(repoName, '')
+      .replace(/^\/+/, '')
+      .replace(/\/+$/, '');
+    
+    redirectURL += '/?/' + encodedPath
+      + (l.search ? '~and~' + l.search.slice(1).replace(/&/g, '~and~') : '')
+      + l.hash;
+    
+    // Store the original URL we wanted to access
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.redirect = l.href;
+    }
+    
+    // Redirect to the new URL
+    window.location.replace(redirectURL);
+  </script>
+</head>
+<body>
+  <h1>Redirecting...</h1>
+  <p>If you are not redirected automatically, please click <a id="redirect-link" href="/">here</a>.</p>
+  <script>
+    // Update the link with the correct redirect URL
+    document.getElementById('redirect-link').setAttribute('href', window.location.href);
+  </script>
+</body>
+</html>

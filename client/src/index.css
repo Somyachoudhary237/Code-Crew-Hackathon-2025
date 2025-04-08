@@ -1,0 +1,162 @@
+@import '@fontsource/dancing-script';
+@import '@fontsource/playfair-display';
+@import '@fontsource/lora';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    background-color: #f8f1e4; /* Updated to our lighter cream */
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .script-font {
+    font-family: 'Dancing Script', cursive;
+  }
+
+  .body-font {
+    font-family: 'Lora', serif;
+  }
+}
+
+@layer components {
+  /* Main color palette */
+  .blue-header {
+    background-color: #7fb9cb; /* Soft sky blue */
+    color: white;
+  }
+
+  .cream-background {
+    background-color: #f8f1e4; /* Lighter cream */
+  }
+
+  .beige-header {
+    background-color: #e2d2b4; /* Warm beige */
+    color: #333;
+  }
+  
+  /* Accent colors */
+  .accent-mint {
+    background-color: #c4e0d0; /* Soft mint */
+    color: #333;
+  }
+  
+  .accent-peach {
+    background-color: #f8d3c5; /* Soft peach */
+    color: #333;
+  }
+  
+  .accent-lavender {
+    background-color: #d9d2e9; /* Soft lavender */
+    color: #333;
+  }
+
+  .rounded-study-image {
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+
+  .back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+    background-color: #333;
+    color: white;
+  }
+  
+  .menu-button {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  .menu-button:hover {
+    background-color: #f8f1e4 !important;
+  }
+  
+  .menu-button svg {
+    color: black !important;
+    fill: black !important;
+    stroke: black !important;
+  }
+  
+  .menu-button span {
+    color: black !important;
+  }
+  
+  /* Button color variations */
+  .btn-sky {
+    background-color: #7fb9cb !important;
+    color: white !important;
+  }
+  
+  .btn-sky:hover {
+    background-color: #6aa6b8 !important;
+  }
+  
+  .btn-beige {
+    background-color: #e2d2b4 !important;
+    color: #333 !important;
+  }
+  
+  .btn-beige:hover {
+    background-color: #d5c3a1 !important;
+  }
+  
+  .btn-mint {
+    background-color: #c4e0d0 !important;
+    color: #333 !important;
+  }
+  
+  .btn-mint:hover {
+    background-color: #b0d1bc !important;
+  }
+  
+  .btn-peach {
+    background-color: #f8d3c5 !important;
+    color: #333 !important;
+  }
+  
+  .btn-peach:hover {
+    background-color: #f0bfad !important;
+  }
+  
+  /* Text colors */
+  .text-sky {
+    color: #7fb9cb !important;
+  }
+  
+  .text-beige {
+    color: #e2d2b4 !important;
+  }
+  
+  .text-mint {
+    color: #c4e0d0 !important;
+  }
+  
+  .text-peach {
+    color: #f8d3c5 !important;
+  }
+  
+  /* Gradient backgrounds */
+  .bg-sky-gradient {
+    background: linear-gradient(to right, #7fb9cb, #c4e0d0);
+  }
+  
+  .bg-warm-gradient {
+    background: linear-gradient(to right, #e2d2b4, #f8d3c5);
+  }
+}

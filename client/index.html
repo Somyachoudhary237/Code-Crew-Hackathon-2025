@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="description" content="Calm Corners - A platform to find and book quiet study spaces with real-time availability tracking" />
+    <meta name="keywords" content="study spaces, quiet places, libraries, coworking, booking, student" />
+    <meta name="author" content="Anmol Pathak, Somya Choudhary, Ashish Dwivedi, Mayank Chouhan, Ganesh Rathore" />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Calm Corners - Find Perfect Study Spaces" />
+    <meta property="og:description" content="Discover and book quiet study spaces with real-time availability tracking" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://calmcorners.github.io/" />
+    
+    <!-- Favicon and PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.svg">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#86c5da">
+    
+    <title>Calm Corners - Find Perfect Study Spaces</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- For GitHub Pages Base Path -->
+    <script>
+      // Handle GitHub Pages path issues with a custom base URL
+      (function() {
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        if (isGitHubPages) {
+          // This helps manage paths when deployed to GitHub Pages
+          window.BASE_URL = window.location.pathname.split('/').slice(0, -1).join('/') || '/';
+        } else {
+          window.BASE_URL = '/';
+        }
+      })();
+    </script>
+    
+    <!-- Main Application Script -->
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- For SPA routing on GitHub Pages -->
+    <script>
+      // Handle GitHub Pages 404 redirect for SPAs
+      (function() {
+        // Check if we need to redirect from a GitHub Pages 404
+        const path = window.location.pathname.split('/').slice(1);
+        
+        // Handle the redirect from our custom 404.html script
+        if (window.location.search.includes('?/')) {
+          // Extract the real path from the query string created by the 404.html script
+          const redirectPath = window.location.search
+            .substring(2) // Remove "?/"
+            .replace(/~and~/g, '&');
+            
+          // Replace the current URL with the real path
+          window.history.replaceState(null, null, 
+            window.location.pathname.split('/?')[0] + '/' + redirectPath + 
+            (window.location.hash || '')
+          );
+        }
+        
+        // Check for existing session storage redirect
+        const redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+  </body>
+</html>
